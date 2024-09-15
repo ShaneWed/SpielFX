@@ -3,6 +3,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
@@ -68,18 +69,18 @@ public class View extends Application {
         return tiles;
     }
 
-    private Rectangle createTile(double x, double y) {
+    private Tile createTile(double x, double y) {
         // Add more variety
-        Rectangle newTile = new Rectangle(x, y, 50, 50);
+        Tile tile = new Tile(x, y, 0, null);
         if(Math.random() * 10 < 7) {
-            newTile.setFill(Color.DARKGREEN);
+            tile.setTerrain(0);
         } else {
-            newTile.setFill(Color.DARKKHAKI);
+            tile.setTerrain(1);
         }
-        newTile.setStroke(Color.HOTPINK);
+        tile.tile.setStroke(Color.HOTPINK);
 
-        newTile.setOnDragOver(dragEvent -> newTile.setFill(Color.YELLOWGREEN));
+        tile.tile.setOnDragOver(dragEvent -> tile.tile.setFill(Color.YELLOWGREEN));
 
-        return newTile;
+        return tile;
     }
 }
